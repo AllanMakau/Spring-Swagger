@@ -14,10 +14,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.swagger.entity.Cargo;
 import br.com.swagger.service.CargoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 
 
 @RestController
+@Api(tags = "Cargos")
 @RequestMapping(value =  "/cargos")
 public class CargoController {
 	
@@ -25,6 +28,10 @@ public class CargoController {
 	@Autowired
 	private CargoService service;
 	
+	
+	
+	
+	@ApiOperation(value="Listas Todos os Cargos")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Cargo>> obterLista(){
 		
@@ -33,6 +40,10 @@ public class CargoController {
 	}
 	
 	
+	
+	
+	
+	@ApiOperation(value="Obter Cargo por ID")
 	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
 	public ResponseEntity<Cargo> obterLista(@PathVariable Long id){
 		
@@ -41,6 +52,9 @@ public class CargoController {
 	}
 	
 	
+	
+	
+	@ApiOperation(value="Cadastrar um cargo")
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Cargo> salvar(@RequestBody Cargo obj){
 		
@@ -51,6 +65,8 @@ public class CargoController {
 	
 	
 	
+	
+	@ApiOperation(value="Atualizar um cargo atraves de um objeto")
 	@RequestMapping( method = RequestMethod.PUT)
 	public ResponseEntity<Cargo> atualizarPorObj(@RequestBody Cargo obj){
 		
@@ -59,6 +75,10 @@ public class CargoController {
 	}
 	
 	
+	
+	
+	
+	@ApiOperation(value="Atualizar um cargo atraves de um ID")
 	@RequestMapping( value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> atualizarPorId(@PathVariable Long id){
 		
@@ -67,6 +87,9 @@ public class CargoController {
 	}
 	
 	
+	
+	
+	@ApiOperation(value="Excluir um cargo atraves de um objeto")
 	@RequestMapping( method = RequestMethod.DELETE)
 	public ResponseEntity<Cargo> excluirPorObj(Cargo obj){
 		

@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.swagger.entity.Perfil;
 import br.com.swagger.service.PerfilService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
+@Api(tags = "Perfis")
 @RequestMapping(value =  "/perfis")
 public class PerfilController {
 	
@@ -21,6 +24,11 @@ public class PerfilController {
 	@Autowired
 	private PerfilService service;
 	
+	
+	
+	
+	
+	@ApiOperation(value="Listas Todos os Perfis")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Perfil>> obterLista(){
 		
@@ -29,6 +37,12 @@ public class PerfilController {
 	}
 	
 	
+	
+	
+	
+	
+	
+	@ApiOperation(value="Obter um perfil por ID")
 	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
 	public ResponseEntity<Perfil> obterLista(@PathVariable Long id){
 		
@@ -37,6 +51,11 @@ public class PerfilController {
 	}
 	
 	
+	
+	
+	
+	
+	@ApiOperation(value="Cadastrar um Perfil de Usuário")
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Perfil> salvar(Perfil obj){
 		
@@ -45,6 +64,10 @@ public class PerfilController {
 	}
 
 	
+	
+	
+	
+	@ApiOperation(value="Atualizar um Perfil através de um Objeto")
 	@RequestMapping( method = RequestMethod.PUT)
 	public ResponseEntity<Perfil> atualizarPorObj(Perfil obj){
 		
@@ -54,6 +77,10 @@ public class PerfilController {
 	
 
 	
+	
+	
+	
+	@ApiOperation(value="Atualizar Perfil através de um ID")
 	@RequestMapping(value = "/{id}" , method = RequestMethod.PUT)
 	public ResponseEntity<Void> atualizarPorId(@PathVariable Long id){
 		
@@ -63,6 +90,11 @@ public class PerfilController {
 	}
 	
 	
+	
+	
+	
+	
+	@ApiOperation(value="Excluir um Perfil através de um objeto")
 	@RequestMapping( method = RequestMethod.DELETE)
 	public ResponseEntity<Perfil> excluirPorObj(Perfil obj){
 		
@@ -71,6 +103,11 @@ public class PerfilController {
 	}
 	
 	
+	
+	
+	
+	
+	@ApiOperation(value="Ecluir um perfil através de um ID")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Perfil> excluirPorId(@PathVariable Long id){
 		
