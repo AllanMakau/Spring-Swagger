@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.swagger.entity.Cargo;
+
 import br.com.swagger.entity.Perfil;
 import br.com.swagger.service.PerfilService;
 
@@ -43,7 +43,7 @@ public class PerfilController {
 		service.salvar(obj);
         return ResponseEntity.ok(obj);
 	}
-	
+
 	
 	@RequestMapping( method = RequestMethod.PUT)
 	public ResponseEntity<Perfil> atualizarPorObj(Perfil obj){
@@ -52,12 +52,14 @@ public class PerfilController {
         return ResponseEntity.ok(obj);
 	}
 	
+
 	
-	@RequestMapping( method = RequestMethod.PUT)
-	public ResponseEntity<Perfil> atualizarPorId(Long id){
+	@RequestMapping(value = "/{id}" , method = RequestMethod.PUT)
+	public ResponseEntity<Void> atualizarPorId(@PathVariable Long id){
 		
 		service.salvar(service.obterPorId(id));
-        return ResponseEntity.ok().build();
+		
+        return ResponseEntity.noContent().build();
 	}
 	
 	
@@ -69,12 +71,13 @@ public class PerfilController {
 	}
 	
 	
-	@RequestMapping( method = RequestMethod.DELETE)
-	public ResponseEntity<Perfil> excluirPorId(Long id){
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Perfil> excluirPorId(@PathVariable Long id){
 		
 		service.excluirPorId(id);
         return ResponseEntity.ok().build();
 	}
+	
 	
 
 
